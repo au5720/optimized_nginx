@@ -1,0 +1,23 @@
+   
+sudo fallocate -l 1G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+echo ‘/swapfile none swap sw 0 0’ | sudo tee -a /etc/fstab
+wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb && sudo dpkg -i erlang-solutions_2.0_all.deb
+sudo apt update
+sudo apt install esl-erlang
+sudo apt install elixir
+sudo apt install nodejs npm
+sudo apt install postgresql postgresql-contrib
+sudo -u postgres psql
+sudo find / -name "postgresql.conf"
+sudo nano /etc/postgresql/12/main/postgresql.conf
+sudo find / -name "pg_hba.conf"
+sudo nano /etc/postgresql/12/main/pg_hba.conf 
+sudo systemctl restart postgresql
+sudo apt install nginx
+sudo nano /etc/nginx/sites-available/default
+sudo apt install certbot python3-certbot-nginx
+sudo certbot --nginx -d arrowsrest.com -d www.arrowsrest.com
+sudo certbot renew --dry-run
